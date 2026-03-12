@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORROW Insights | Healthspan Assessment Singapore</title>
+  <meta name="description" content="MORROW Insights is a longevity-focused health screening that gives you a clear picture of your healthspan — and an educational session to help you understand what it means and where to focus next." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F4EF;
+      --warm-white: #FDFCFA;
+      --ink: #1A1916;
+      --ink-soft: #3D3B36;
+      --ink-muted: #7A7870;
+      --sage: #8B9E8A;
+      --sage-light: #C8D4C7;
+      --sage-pale: #EEF2ED;
+      --gold: #B8945A;
+      --gold-light: #D4B07A;
+      --border: #E2DDD6;
+      --border-strong: #C8C2B8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(253,252,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--cream) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      font-size: 12px !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 80px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 5vw, 76px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    .hero-checks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .hero-checks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+    .hero-checks li::before {
+      content: '✦';
+      color: var(--sage);
+      font-size: 11px;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 16px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.25s, color 0.25s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold); color: var(--ink); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      padding: 16px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: border-color 0.25s, background 0.25s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--ink); background: var(--sage-pale); }
+
+    .hero-trust {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 400;
+    }
+
+    .hero-right {
+      background: var(--sage-pale);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 48px;
+    }
+
+    .hero-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(26,25,22,0.08);
+    }
+
+    .hero-card-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-card-price span {
+      font-size: 20px;
+      color: var(--ink-muted);
+      font-weight: 300;
+    }
+
+    .hero-card-gst {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-card-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-card-includes li {
+      font-size: 14px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-card-includes li::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--sage);
+      flex-shrink: 0;
+    }
+
+    .hero-card .btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-card-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 80px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── DIFFERENCE STRIP ── */
+    .difference {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 80px;
+    }
+
+    .difference-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .difference-left .section-eyebrow { color: var(--gold-light); }
+    .difference-left .section-eyebrow::before { background: var(--gold-light); }
+    .difference-left .section-headline { color: var(--cream); }
+    .difference-left .section-sub { color: rgba(247,244,239,0.7); }
+
+    .difference-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .difference-table th {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding: 0 0 16px 0;
+      text-align: left;
+      border-bottom: 1px solid rgba(247,244,239,0.15);
+      color: rgba(247,244,239,0.5);
+    }
+    .difference-table th:last-child { color: var(--gold-light); }
+    .difference-table td {
+      padding: 16px 0;
+      font-size: 14px;
+      font-weight: 300;
+      border-bottom: 1px solid rgba(247,244,239,0.08);
+      vertical-align: top;
+      color: rgba(247,244,239,0.6);
+      line-height: 1.5;
+    }
+    .difference-table td:first-child {
+      color: rgba(247,244,239,0.4);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      width: 28%;
+      padding-right: 24px;
+    }
+    .difference-table td:last-child {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    /* ── WHAT WE MEASURE ── */
+    .measure { background: var(--cream); }
+
+    .measure-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .measure-note {
+      background: var(--sage-pale);
+      border-left: 3px solid var(--sage);
+      padding: 28px 32px;
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+      border-radius: 0 4px 4px 0;
+    }
+    .measure-note strong { color: var(--ink); font-weight: 500; }
+
+    .measure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .measure-card {
+      background: var(--warm-white);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .measure-card:hover { background: var(--sage-pale); }
+
+    .measure-card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      position: absolute;
+      top: 24px;
+      right: 28px;
+    }
+
+    .measure-card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--sage-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .measure-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .measure-card-sub {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .measure-card p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--warm-white); }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      border: 1px solid var(--border);
+    }
+
+    .how-step {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .how-step:last-child { border-right: none; }
+
+    .how-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .how-step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .how-step p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .how-step-detail {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .how-step-detail::before {
+      content: '◦';
+      color: var(--sage);
+    }
+
+    /* ── WHAT YOU WALK AWAY WITH ── */
+    .walkaway { background: var(--sage-pale); }
+
+    .walkaway-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .walkaway-item {
+      background: var(--warm-white);
+      padding: 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .walkaway-item:hover { background: var(--cream); }
+
+    .walkaway-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .walkaway-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .walkaway-item p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── ADD-ONS ── */
+    .addons { background: var(--warm-white); }
+
+    .addons-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .addon-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 4px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .addon-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 32px rgba(26,25,22,0.06);
+    }
+
+    .addon-card.featured {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .addon-tag {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 16px;
+    }
+    .addon-card.featured .addon-tag { color: var(--gold-light); }
+
+    .addon-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .addon-card.featured h3 { color: var(--cream); }
+
+    .addon-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .addon-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .addon-card.featured p { color: rgba(247,244,239,0.65); }
+
+    .addon-consult {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 20px;
+    }
+
+    .addon-link {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .addon-link:hover { border-color: var(--gold); color: var(--gold); }
+    .addon-card.featured .addon-link { color: var(--gold-light); border-color: var(--gold); }
+
+    .addon-disclaimer {
+      margin-top: 48px;
+      padding: 24px 32px;
+      background: var(--cream);
+      border-left: 3px solid var(--border-strong);
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .addon-disclaimer strong { color: var(--ink-soft); font-weight: 500; }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--cream); }
+
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pricing-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 56px 48px;
+      box-shadow: 0 16px 48px rgba(26,25,22,0.06);
+    }
+
+    .pricing-card-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .pricing-card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-card-price sup {
+      font-size: 28px;
+      vertical-align: super;
+    }
+
+    .pricing-card-gst {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 40px;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .pricing-includes li {
+      font-size: 15px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-weight: 300;
+    }
+    .pricing-includes li::before {
+      content: '✦';
+      color: var(--sage);
+      font-size: 10px;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .pricing-disclaimer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    .pricing-right { }
+
+    .pricing-right h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 3vw, 44px);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .pricing-right p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .pricing-eligibility {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-eligibility li {
+      font-size: 13px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .pricing-eligibility li::before {
+      content: '—';
+      color: var(--border-strong);
+      flex-shrink: 0;
+    }
+
+    /* ── FAQ ── */
+    .faq { background: var(--warm-white); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 80px;
+      margin-top: 64px;
+    }
+
+    .faq-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .faq-question {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      line-height: 1.4;
+    }
+
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .faq-item.open .faq-toggle {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-top: 16px;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--ink);
+      padding: 96px 80px;
+      text-align: center;
+    }
+
+    .cta-strip h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 4vw, 60px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .cta-strip h2 em { color: var(--gold-light); font-style: italic; }
+
+    .cta-strip p {
+      font-size: 16px;
+      color: rgba(247,244,239,0.65);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .cta-strip .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+      margin-right: 16px;
+    }
+    .cta-strip .btn-primary:hover { background: var(--gold-light); }
+
+    .cta-strip .btn-secondary {
+      border-color: rgba(247,244,239,0.3);
+      color: var(--cream);
+    }
+    .cta-strip .btn-secondary:hover {
+      border-color: var(--cream);
+      background: rgba(247,244,239,0.08);
+    }
+
+    .cta-disclaimer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: rgba(247,244,239,0.35);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(247,244,239,0.08);
+      padding: 48px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+    }
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-legal {
+      font-size: 12px;
+      color: rgba(247,244,239,0.3);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero-headline { animation: fadeUp 0.7s ease 0.2s both; }
+    .hero-sub { animation: fadeUp 0.7s ease 0.35s both; }
+    .hero-checks { animation: fadeUp 0.7s ease 0.45s both; }
+    .hero-actions { animation: fadeUp 0.7s ease 0.55s both; }
+    .hero-trust { animation: fadeUp 0.7s ease 0.65s both; }
+    .hero-card { animation: fadeUp 0.8s ease 0.4s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 20px 32px; }
+      .nav-links { display: none; }
+      section { padding: 72px 32px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 48px 32px; }
+      .hero-right { min-height: 400px; }
+      .difference { padding: 72px 32px; }
+      .difference-grid { grid-template-columns: 1fr; gap: 48px; }
+      .measure-intro { grid-template-columns: 1fr; gap: 32px; }
+      .measure-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-steps { grid-template-columns: 1fr; }
+      .how-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .how-step:last-child { border-bottom: none; }
+      .walkaway-grid { grid-template-columns: 1fr; }
+      .addons-intro { grid-template-columns: 1fr; gap: 32px; }
+      .addons-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-inner { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .cta-strip { padding: 72px 32px; }
+      footer { padding: 40px 32px; flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .measure-grid { grid-template-columns: 1fr; }
+      .addons-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">MORROW <span>Medical</span></a>
+  <ul class="nav-links">
+    <li><a href="#measure">What We Measure</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#addons">Add-ons</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#book" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">MORROW Insights</p>
+    <h1 class="hero-headline">
+      Know where you stand.<br>
+      Know what to do <em>next.</em>
+    </h1>
+    <p class="hero-sub">
+      A longevity-focused health screening that gives you a clear picture of your healthspan — and an educational session to help you understand what it means and where to focus next.
+    </p>
+    <ul class="hero-checks">
+      <li>Understand your key healthspan levers — fitness, body composition, metabolic health</li>
+      <li>Receive a detailed report of your results, explained in plain language</li>
+      <li>Attend a clinician-supported Group Discussion to guide your next steps</li>
+    </ul>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">Book MORROW Insights</a>
+      <a href="https://wa.me/6500000000" class="btn-secondary">Chat on WhatsApp</a>
+    </div>
+    <div class="hero-trust">
+      <span class="trust-item">Clinician-Supported</span>
+      <span class="trust-item">Evidence-Informed</span>
+      <span class="trust-item">Privacy-First</span>
+      <span class="trust-item">MOH Licensed</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-card">
+        <p class="hero-card-label">MORROW Insights — Starting from</p>
+        <p class="hero-card-price"><span>S$</span>599</p>
+        <p class="hero-card-gst">+ GST &nbsp;·&nbsp; Singapore residents only</p>
+        <ul class="hero-card-includes">
+          <li>Functional fitness assessment</li>
+          <li>Body composition analysis (DEXA)</li>
+          <li>Metabolic &amp; cardiovascular blood markers</li>
+          <li>Lung function (spirometry)</li>
+          <li>Psychological well-being assessment</li>
+          <li>Detailed results report</li>
+          <li>Educational Group Discussion session</li>
+        </ul>
+        <a href="#book" class="btn-primary">Reserve Your Session</a>
+        <p class="hero-card-note">Allow approximately 2 hrs 40 mins for your visit.<br>Optional add-ons available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<div class="difference" id="difference">
+  <div class="difference-grid">
+    <div class="difference-left">
+      <p class="section-eyebrow">A different approach</p>
+      <h2 class="section-headline">Goes beyond a standard health screening.</h2>
+      <p class="section-sub">Most screenings look for what's wrong. MORROW Insights measures your physiological reserve — so you can strengthen what matters most, before problems arise.</p>
+    </div>
+    <div>
+      <table class="difference-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Typical Screening</th>
+            <th>MORROW Insights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Goal</td>
+            <td>Detect risk / rule out concerns</td>
+            <td>Establish a healthspan baseline + what to improve</td>
+          </tr>
+          <tr>
+            <td>What you measure</td>
+            <td>Mostly disease markers</td>
+            <td>Fitness, body composition, metabolic health</td>
+          </tr>
+          <tr>
+            <td>What you get</td>
+            <td>Static report + basic advice</td>
+            <td>Detailed report + Group Discussion session</td>
+          </tr>
+          <tr>
+            <td>After</td>
+            <td>Self-managed, ad hoc follow-up</td>
+            <td>Designed for tracking + reassessment over time</td>
+          </tr>
+          <tr>
+            <td>Best for</td>
+            <td>Annual reassurance checks</td>
+            <td>Those wanting to improve long-term healthspan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE MEASURE -->
+<section class="measure" id="measure">
+  <div class="section-inner">
+    <div class="measure-intro">
+      <div>
+        <p class="section-eyebrow">Six components</p>
+        <h2 class="section-headline">What we measure — and why it matters.</h2>
+      </div>
+      <div class="measure-note">
+        <strong>Why these tests?</strong> As we age, physiological reserve tends to decline — the capacity your heart, lungs, and muscles have to handle stress and stay independent. MORROW Insights measures key markers of that reserve, so you can understand where you are today and where to focus next.
+      </div>
+    </div>
+
+    <div class="measure-grid">
+      <div class="measure-card">
+        <span class="measure-card-num">01</span>
+        <div class="measure-card-icon">🫁</div>
+        <p class="measure-card-sub">Aerobic Fitness</p>
+        <h3>VO₂ max</h3>
+        <p>How efficiently your heart, lungs, and muscles work under effort. A well-studied marker of cardiovascular fitness and long-term health, supported by peer-reviewed research.</p>
+      </div>
+      <div class="measure-card">
+        <span class="measure-card-num">02</span>
+        <div class="measure-card-icon">🦴</div>
+        <p class="measure-card-sub">Body Composition</p>
+        <h3>DEXA Scan</h3>
+        <p>Bone density, muscle mass, and visceral fat distribution. Provides detailed body composition data that goes beyond what BMI or scales can show.</p>
+      </div>
+      <div class="measure-card">
+        <span class="measure-card-num">03</span>
+        <div class="measure-card-icon">💪</div>
+        <p class="measure-card-sub">Physical Resilience</p>
+        <h3>Strength &amp; Power</h3>
+        <p>Functional capacity through validated strength and power tests. Physical resilience is closely linked to healthy ageing and long-term independence.</p>
+      </div>
+      <div class="measure-card">
+        <span class="measure-card-num">04</span>
+        <div class="measure-card-icon">🌬</div>
+        <p class="measure-card-sub">Respiratory Health</p>
+        <h3>Spirometry</h3>
+        <p>How well your lungs move air and support endurance and daily energy. An important marker that most routine screenings overlook.</p>
+      </div>
+      <div class="measure-card">
+        <span class="measure-card-num">05</span>
+        <div class="measure-card-icon">🩸</div>
+        <p class="measure-card-sub">Metabolic &amp; Cardiovascular</p>
+        <h3>Blood Biomarkers</h3>
+        <p>Metabolic health, lipids, glucose, inflammation, and nutritional status. May reveal early metabolic shifts worth monitoring over time.</p>
+      </div>
+      <div class="measure-card">
+        <span class="measure-card-num">06</span>
+        <div class="measure-card-icon">🧠</div>
+        <p class="measure-card-sub">Lifestyle &amp; Resilience</p>
+        <h3>Psychological Well-being</h3>
+        <p>Mental and emotional health factors that influence daily functioning. Well-being and resilience are core components of long-term healthspan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <p class="section-eyebrow">Three steps</p>
+    <h2 class="section-headline">From uncertainty to clarity.</h2>
+    <p class="section-sub">A straightforward process designed around your time and your goals.</p>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <p class="how-step-num">01</p>
+        <h3>Book &amp; Prepare</h3>
+        <p>Reserve your session online. We'll send you a short pre-screening form so we can prepare for your visit and personalise your experience from the start.</p>
+        <p class="how-step-detail">Takes about 5 minutes to complete</p>
+      </div>
+      <div class="how-step">
+        <p class="how-step-num">02</p>
+        <h3>Come In for Testing</h3>
+        <p>Visit our Singapore clinic for a comprehensive assessment covering all six components. Our clinical team guides you through each test.</p>
+        <p class="how-step-detail">Allow approximately 2 hours 40 minutes</p>
+      </div>
+      <div class="how-step">
+        <p class="how-step-num">03</p>
+        <h3>Group Discussion</h3>
+        <p>Attend an educational Group Discussion with our clinical team. You'll leave with a clear understanding of your results, what they mean, and practical next steps to focus on.</p>
+        <p class="how-step-detail">90-minute session, 6–10 participants</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; padding:24px 32px; background:var(--sage-pale); border-left:3px solid var(--sage); font-size:14px; color:var(--ink-soft); line-height:1.7;">
+      <strong style="color:var(--ink);">Note:</strong> The Group Discussion is an educational session and does not replace a 1:1 doctor consultation. For a more personalised review of your results, a separate 1:1 consultation is available as an add-on. For individuals with complex conditions, a 1:1 consultation may be recommended by our clinical team.
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU WALK AWAY WITH -->
+<section class="walkaway" id="walkaway">
+  <div class="section-inner">
+    <p class="section-eyebrow">Your outcomes</p>
+    <h2 class="section-headline">What you walk away with.</h2>
+    <p class="section-sub">MORROW Insights isn't just a test. It's a starting point for meaningful, informed change.</p>
+
+    <div class="walkaway-grid">
+      <div class="walkaway-item">
+        <div class="walkaway-icon">📋</div>
+        <div>
+          <h3>Your results, explained clearly</h3>
+          <p>No jargon-filled PDFs. Each result is put into context by your clinical team during the Group Discussion, so you understand what it means for your daily life.</p>
+        </div>
+      </div>
+      <div class="walkaway-item">
+        <div class="walkaway-icon">🎯</div>
+        <div>
+          <h3>Key areas to focus on</h3>
+          <p>Your clinical team highlights what your results mean and where to direct your attention — helping you cut through the noise and focus on what actually matters.</p>
+        </div>
+      </div>
+      <div class="walkaway-item">
+        <div class="walkaway-icon">🗺</div>
+        <div>
+          <h3>Practical next steps</h3>
+          <p>Practical guidance across training, nutrition, and sleep — based on your results and discussed during your Group Discussion. Grounded in evidence, designed for real life.</p>
+        </div>
+      </div>
+      <div class="walkaway-item">
+        <div class="walkaway-icon">🔄</div>
+        <div>
+          <h3>A clear follow-up pathway</h3>
+          <p>Know when to re-test, what to track, and when to see a specialist. MORROW is designed for tracking and reassessment over time — not a one-off check.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons" id="addons">
+  <div class="section-inner">
+    <div class="addons-intro">
+      <div>
+        <p class="section-eyebrow">Optional add-ons</p>
+        <h2 class="section-headline">Go deeper where it matters to you.</h2>
+      </div>
+      <p class="section-sub" style="max-width:100%">These panels are entirely optional and not required for MORROW Insights. They are designed for individuals who want a more detailed look at specific areas of their health.</p>
+    </div>
+
+    <div class="addons-grid">
+      <div class="addon-card featured">
+        <p class="addon-tag">Most Comprehensive</p>
+        <h3>Complete Preventive &amp; Performance</h3>
+        <p class="addon-price">S$1,799</p>
+        <p>Preventive panel bundle + performance panel combined. For those who want the broadest view of health risks and performance markers in one assessment.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Ask about this</a>
+      </div>
+      <div class="addon-card">
+        <p class="addon-tag">Cardiovascular</p>
+        <h3>Preventive Heart Panel</h3>
+        <p class="addon-price">S$499</p>
+        <p>Advanced cardiovascular risk markers for individuals who want deeper insight beyond standard cholesterol testing — especially with family history or active lifestyle.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Ask about this</a>
+      </div>
+      <div class="addon-card">
+        <p class="addon-tag">Cognitive Health</p>
+        <h3>Preventive Brain Panel</h3>
+        <p class="addon-price">S$499</p>
+        <p>Neuro-metabolic markers including thyroid function, omega-3 status, and a cognitive baseline assessment. For those thinking long-term about mental sharpness and focus.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Ask about this</a>
+      </div>
+      <div class="addon-card">
+        <p class="addon-tag">Cancer Surveillance</p>
+        <h3>Preventive Cancer Panel</h3>
+        <p class="addon-price">S$499</p>
+        <p>Selected tumour markers to establish a baseline for longitudinal monitoring. For individuals who want proactive surveillance alongside their existing age-appropriate screening.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Ask about this</a>
+      </div>
+      <div class="addon-card">
+        <p class="addon-tag">Performance &amp; Recovery</p>
+        <h3>Performance Panel</h3>
+        <p class="addon-price">S$899</p>
+        <p>Advanced fitness and recovery biomarkers including hormonal balance, inflammation, and micronutrient status — for those who want to train smarter and recover better.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Ask about this</a>
+      </div>
+      <div class="addon-card">
+        <p class="addon-tag">Coming Soon</p>
+        <h3>Preventive Panel Bundle</h3>
+        <p class="addon-price">S$1,299</p>
+        <p>Full suite of preventive screenings bundled together. Heart, brain, and cancer panels combined at a reduced rate.</p>
+        <p class="addon-consult">✦ Includes 1:1 doctor consultation</p>
+        <a href="#" class="addon-link">Join waitlist</a>
+      </div>
+    </div>
+
+    <div class="addon-disclaimer">
+      <strong>Important — Cancer Panel:</strong> Tumour markers are not diagnostic for cancer and are not recommended as a general population screening tool. Elevated results may be caused by non-cancerous conditions such as inflammation, infection, or benign growths. Normal results do not exclude the presence of cancer. This panel establishes baseline values for longitudinal monitoring and does not replace age-appropriate cancer screening programmes (such as colonoscopy or mammography). All results must be reviewed with your physician.
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-card">
+      <p class="pricing-card-label">MORROW Insights</p>
+      <p class="pricing-card-price"><sup>S$</sup>599</p>
+      <p class="pricing-card-gst">+ GST &nbsp;·&nbsp; Per person</p>
+      <ul class="pricing-includes">
+        <li>Functional fitness assessment (VO₂ max, strength &amp; power)</li>
+        <li>Body composition analysis (DEXA scan)</li>
+        <li>Lung function test (spirometry)</li>
+        <li>Metabolic &amp; cardiovascular blood markers</li>
+        <li>Psychological well-being assessment</li>
+        <li>Detailed results report</li>
+        <li>Educational Group Discussion with clinical team</li>
+      </ul>
+      <a href="#book" class="btn-primary" style="display:block;text-align:center;">Book MORROW Insights</a>
+      <p class="pricing-disclaimer">Optional add-ons available for purchase separately. A 1:1 doctor consultation is available for individuals who want a more personalised review of their results.</p>
+    </div>
+
+    <div class="pricing-right">
+      <h2>Everything you need to understand your healthspan — clearly.</h2>
+      <p>MORROW Insights includes all six assessment components, a detailed results report, and an educational Group Discussion where our clinical team helps you understand your findings and what to do next.</p>
+      <ul class="pricing-eligibility">
+        <li>Singapore residents only</li>
+        <li>Ages 18 and above (ages 18–21 require parent or guardian consent)</li>
+        <li>A 1:1 consultation may be recommended for individuals with complex health conditions</li>
+        <li>Prices exclude GST</li>
+        <li>Terms and conditions apply</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <p class="section-eyebrow">Common questions</p>
+    <h2 class="section-headline">Frequently asked.</h2>
+
+    <div class="faq-grid">
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How does MORROW Insights differ from a typical health screening?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Most health screenings focus on detecting disease markers. MORROW Insights measures your physiological reserve — fitness, body composition, metabolic health — and provides an educational Group Discussion to help you understand your results and what to do next. It's designed as a starting point for ongoing tracking, not a one-off check.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Who is MORROW Insights for?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            MORROW Insights is for health-conscious adults who want a clear, evidence-informed picture of their current healthspan — and practical guidance on where to focus next. It suits those who are generally well but want to go beyond reassurance and take a more proactive approach to their long-term health.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How does MORROW Insights complement my existing healthcare?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            MORROW Insights is designed to complement your existing care, not replace it. Your GP provides important clinical oversight and medical management. MORROW adds a deeper functional picture — fitness, body composition, metabolic patterns — and education to help you make more informed lifestyle decisions alongside your regular healthcare.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What happens during the Group Discussion?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            The Group Discussion is a 90-minute educational session with 6–10 participants, led by a clinician. It walks through key findings, common patterns, and how to interpret your screening results. It is an educational session and does not replace a 1:1 consultation. For a personalised review, a separate 1:1 consultation is available.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Is this a one-time report or is there follow-up?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            MORROW Insights is designed for tracking and reassessment over time. After your initial screening and Group Discussion, your clinical team will guide you on when to re-test and what to monitor. Optional follow-up and tracking services are available.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How long does the whole process take?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Allow approximately 2 hours 40 minutes for your testing visit. The Group Discussion is a separate 90-minute session. You will be advised on scheduling during the booking process.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Do I need to fast before the assessment?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, fasting is required for accurate blood biomarker results. We'll provide full preparation instructions after you book, including fasting duration and any other requirements.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Where is MORROW Medical located?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            MORROW Medical is located at 10 Coleman Street, #03-01, Singapore 179809. We are open Monday to Friday, 8:30am to 5:30pm. Closed on Sundays and public holidays.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip" id="book">
+  <h2>Ready to know <em>where you stand?</em></h2>
+  <p>No hype — just evidence-informed insights, a clear picture of your healthspan, and practical next steps.</p>
+  <div>
+    <a href="mailto:connect@morrowmedical.sg" class="btn-primary">Book MORROW Insights</a>
+    <a href="https://wa.me/6500000000" class="btn-secondary">Chat on WhatsApp</a>
+  </div>
+  <p class="cta-disclaimer">
+    MORROW Insights is not a substitute for diagnosis or emergency care.<br>
+    If you have symptoms or an acute health concern, please consult a doctor.<br>
+    Healthcare services provided by Longevity &amp; Lifestyle Medical Pte. Ltd. (MOH Licence: L/25M0780/MDS/001/252)
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MORROW <span>Medical</span></div>
+  <ul class="footer-links">
+    <li><a href="https://morrowmedical.sg/faq">FAQ</a></li>
+    <li><a href="https://morrowmedical.sg/privacy-statement">Privacy</a></li>
+    <li><a href="https://morrowmedical.sg/terms-and-conditions">Terms</a></li>
+    <li><a href="https://morrowmedical.sg/contact-us">Contact</a></li>
+  </ul>
+  <p class="footer-legal">
+    All healthcare services are provided by Longevity &amp; Lifestyle Medical Pte. Ltd., operating under the brand "MORROW Medical", licensed by the Ministry of Health under the Healthcare Services Act 2020 (Licence No. L/25M0780/MDS/001/252). 10 Coleman Street, #03-01, Singapore 179809. &copy; 2026.
+  </p>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      item.querySelector('.faq-toggle').textContent = item.classList.contains('open') ? '−' : '+';
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.measure-card, .how-step, .walkaway-item, .addon-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
