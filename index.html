@@ -1143,3 +1143,10 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">All healthcare services are provided by Longevity &amp; Lifestyle Medical Pte. Ltd., which operates under the brand "MORROW Medical", licensed by the Ministry of Health under the Healthcare Services Act 2020 (Licence No. L/25M0780/MDS/001/252). MORROW Insights is a health awareness and monitoring service. It does not diagnose, treat, or manage any medical condition. © 2026 Longevity &amp; Lifestyle Medical Pte. Ltd. All rights reserved.<
+<script>
+function toggleAddons(btn) {
+  var body = document.getElementById("addons-body");
+  body.classList.toggle("open");
+  btn.textContent = body.classList.contains("open") ? "Hide add-on panels ↑" : "View add-on panels ↓";
+}
+</script>
