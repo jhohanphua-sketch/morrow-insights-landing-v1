@@ -419,23 +419,37 @@ h2.serif-light { color: var(--white); }
 }
 .addons-toggle-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
 .addons-body { display: none; }
-.addons-body.open { display: block; }
-.addon-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.addon-card {
-  background: var(--white); border: 1px solid var(--border-light);
-  border-radius: var(--r); padding: 24px;
-}
-.addon-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
-.addon-price {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px; color: var(--ink); margin-bottom: 4px;
-}
-.addon-consult {
+.addons-body.open { display: block; margin-top: 32px; }
+.addon-theme-group { margin-bottom: 32px; }
+.addon-theme-group:last-child { margin-bottom: 0; }
+.addon-theme-label {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; color: var(--teal-dark); letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 10px;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--teal-dark); margin-bottom: 6px;
 }
-.addon-desc { font-size: 12px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+.addon-theme-desc {
+  font-size: 13px; color: var(--muted); font-style: italic;
+  font-weight: 300; margin-bottom: 14px; line-height: 1.65;
+}
+.addon-theme-cards { display: flex; flex-direction: column; gap: 8px; }
+.addon-theme-card {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--white); border: 1px solid var(--border-light);
+  border-radius: var(--r); padding: 16px 20px; gap: 20px;
+}
+.addon-theme-card-left { flex: 1; }
+.addon-theme-card-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.addon-theme-card-sub { font-size: 11px; color: var(--muted); font-weight: 300; line-height: 1.55; }
+.addon-theme-card-right { text-align: right; flex-shrink: 0; }
+.addon-theme-card-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px; color: var(--ink); line-height: 1; margin-bottom: 6px;
+}
+.addon-theme-card-cta {
+  display: inline-block; font-size: 11px; color: var(--teal-dark);
+  font-weight: 500; text-decoration: none; white-space: nowrap;
+}
+.addon-theme-divider { height: 1px; background: var(--border-light); margin: 28px 0; }
 .cancer-warning {
   background: rgba(184,134,11,0.07); border: 1px solid rgba(184,134,11,0.25);
   border-radius: 6px; padding: 10px 14px;
@@ -855,17 +869,17 @@ footer {
   <div class="wrap">
     <div class="blood-grid">
       <div>
-        <div class="s-tag">The full blood panel</div>
-        <h2 class="serif">40+ blood markers.<br>Every one explained.</h2>
-        <p style="font-size:15px;color:var(--ink-mid);font-weight:300;line-height:1.8;margin-bottom:16px;">Your blood panel covers seven categories of health. Nothing gets buried — every marker is included in your results report and covered in your educational group session.</p>
+        <div class="s-tag">Everything that's measured</div>
+        <h2 class="serif">40+ longevity markers.<br>Every one explained.</h2>
+        <p style="font-size:15px;color:var(--ink-mid);font-weight:300;line-height:1.8;margin-bottom:16px;">From blood markers to body composition, cardiovascular fitness to lung function. Nothing gets buried — every test is included in your results report and covered in your educational group session.</p>
         <p style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.7;">Expand each category to see exactly what's measured.</p>
       </div>
       <div class="acc">
-        <div class="acc-item open">
+        <div class="acc-item">
           <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
             <div class="acc-q-left">
               <span class="acc-q-label">Haematology</span>
-              <span class="acc-q-count">2 tests</span>
+              <span class="acc-q-count">2 markers</span>
             </div>
             <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
           </div>
@@ -917,6 +931,48 @@ footer {
           </div>
           <div class="acc-body"><ul class="marker-list"><li>Ferritin</li><li>Iron</li><li>TIBC</li><li>Vitamin B12</li><li>Folate</li><li>Vitamin D</li></ul></div>
         </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">DEXA</span><span class="acc-q-count">6 measurements</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>Body fat %</li><li>Visceral fat</li><li>Lean mass</li><li>Bone mineral density</li><li>Android/gynoid fat ratio</li><li>Left-to-right muscle balance</li></ul><div class="acc-cite">DEXA scanning involves exposure to low-dose ionising radiation. Not recommended if you are pregnant, may be pregnant, or are breastfeeding. Please inform our staff if any of these apply to you.</div></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">VO₂ max</span><span class="acc-q-count">1 measurement</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>VO₂ max</li></ul></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">Strength &amp; power</span><span class="acc-q-count">3 assessments</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>Countermovement jump</li><li>Isometric mid-thigh pull</li><li>Grip strength</li></ul></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">ECG</span><span class="acc-q-count">1 measurement</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>Electrocardiogram</li></ul></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">Spirometry</span><span class="acc-q-count">1 measurement</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>Spirometry test</li></ul></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-q" onclick="this.closest('.acc-item').classList.toggle('open')">
+            <div class="acc-q-left"><span class="acc-q-label">Vitals</span><span class="acc-q-count">6 measurements</span></div>
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+          </div>
+          <div class="acc-body"><ul class="marker-list"><li>Blood pressure</li><li>SpO₂</li><li>Height</li><li>Weight</li><li>BMI</li><li>Waist circumference</li></ul></div>
+        </div>
       </div>
     </div>
   </div>
@@ -967,52 +1023,107 @@ footer {
 <section class="section section-white">
   <div class="wrap">
     <div class="addons-header">
-      <div class="s-tag" style="text-align:center;">Optional</div>
+      <div class="s-tag" style="text-align:center;">Optional add-ons</div>
       <h2 class="serif" style="text-align:center;">Want to go deeper?</h2>
-      <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:8px;">Add-on panels are available if you want more detail in specific areas.</p>
+      <p style="text-align:center;font-size:14px;color:var(--muted);margin-top:8px;">Add what's relevant to you. Every add-on includes a 1:1 doctor consultation.</p>
       <button class="addons-toggle-btn" onclick="toggleAddons(this)">View add-on panels ↓</button>
     </div>
     <div class="addons-body" id="addons-body">
-      <div class="addon-grid">
-        <div class="addon-card">
-          <div class="addon-name">Preventive Heart Panel</div>
-          <div class="addon-price">$499</div>
-          <div class="addon-consult">Includes 1:1 doctor consultation</div>
-          <div class="addon-desc">NT-proBNP, Homocysteine, ApoA1, ApoB, ApoB/ApoA1 ratio, Lp(a). For those with family history of cardiovascular conditions or who want greater depth beyond standard cholesterol testing.</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-name">Preventive Brain Panel</div>
-          <div class="addon-price">$499</div>
-          <div class="addon-consult">Includes 1:1 doctor consultation</div>
-          <div class="addon-desc">Omega-3 Index, thyroid panel (TSH, FT4, FT3), Homocysteine, and cognitive baseline assessment. For those thinking long-term about cognitive health.</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-name">Preventive Cancer Panel</div>
-          <div class="addon-price">$499</div>
-          <div class="addon-consult">Includes 1:1 doctor consultation</div>
-          <div class="addon-desc">Tumour markers (CEA, CA 19-9, AFP, PSA/CA 125) for longitudinal monitoring. Optional SPOT-MAS™ ctDNA test (+S$899) also available.</div>
-          <div class="cancer-warning">⚠ Tumour markers are not diagnostic for cancer and must not replace recommended cancer screening programmes. Results must be reviewed with a physician.</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-name">Performance Panel</div>
-          <div class="addon-price">$899</div>
-          <div class="addon-consult">Includes 1:1 doctor consultation</div>
-          <div class="addon-desc">Testosterone, SHBG, IGF-1, thyroid, ApoB, ApoA1, Lp(a), CK, Homocysteine, zinc, selenium. For those optimising energy, training, and recovery.</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-name">Preventive Bundle</div>
-          <div class="addon-price">$1,299</div>
-          <div class="addon-consult">Includes 1:1 doctor consultation · Heart + Brain + Cancer</div>
-          <div class="addon-desc">All three preventive panels combined. Cardiovascular, cognitive, and baseline cancer risk markers in one.</div>
-          <div class="cancer-warning">⚠ Includes tumour markers — see Cancer Panel note above.</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-name">1:1 Doctor Consultation</div>
-          <div class="addon-price" style="font-size:16px;margin:8px 0 4px;color:var(--teal-dark);">Available separately</div>
-          <div class="addon-consult">45 min · After your group session</div>
-          <div class="addon-desc">Personal medical review of your results with a MORROW doctor. Available online or in-person once your group session is complete.</div>
+
+      <!-- Prevention & Performance -->
+      <div class="addon-theme-group">
+        <div class="addon-theme-label">Prevention &amp; performance</div>
+        <div class="addon-theme-desc">For those who want the most complete picture — health risks, hormonal health, and recovery in one.</div>
+        <div class="addon-theme-cards">
+          <div class="addon-theme-card">
+            <div class="addon-theme-card-left">
+              <div class="addon-theme-card-name">Complete preventive and performance panel</div>
+              <div class="addon-theme-card-sub">Includes 1:1 doctor consultation · Preventive bundle + Performance panel</div>
+              <div style="font-size:12px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-top:8px;">You're active and health-conscious, but want to know if your body is keeping up — inside and out. This covers everything from cardiovascular and cancer risk to hormones, recovery, and metabolic health.</div>
+            </div>
+            <div class="addon-theme-card-right">
+              <div class="addon-theme-card-price">S$1,799</div>
+              <a href="#" class="addon-theme-card-cta">Learn more →</a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="addon-theme-divider"></div>
+
+      <!-- Prevention -->
+      <div class="addon-theme-group">
+        <div class="addon-theme-label">Prevention</div>
+        <div class="addon-theme-desc">For those who want a broader baseline across heart, brain, and cancer health.</div>
+        <div class="addon-theme-cards">
+          <div class="addon-theme-card">
+            <div class="addon-theme-card-left">
+              <div class="addon-theme-card-name">Preventive panel bundle</div>
+              <div class="addon-theme-card-sub">Includes 1:1 doctor consultation · Heart + Brain + Cancer panels</div>
+              <div style="font-size:12px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-top:8px;">Standard blood tests show you if something is wrong. This goes further — giving you a proactive baseline across the areas that matter most for long-term health.</div>
+            </div>
+            <div class="addon-theme-card-right">
+              <div class="addon-theme-card-price">S$1,299</div>
+              <a href="#" class="addon-theme-card-cta">Learn more →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-theme-divider"></div>
+
+      <!-- Performance -->
+      <div class="addon-theme-group">
+        <div class="addon-theme-label">Performance</div>
+        <div class="addon-theme-desc">For those who exercise regularly but still feel flat, tired, or inconsistent — this tells you why.</div>
+        <div class="addon-theme-cards">
+          <div class="addon-theme-card">
+            <div class="addon-theme-card-left">
+              <div class="addon-theme-card-name">Performance panel</div>
+              <div class="addon-theme-card-sub">Includes 1:1 doctor consultation · Testosterone, thyroid, advanced lipids, micronutrients</div>
+              <div style="font-size:12px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-top:8px;">Covers the hormonal and metabolic markers that drive energy, recovery, and physical output.</div>
+            </div>
+            <div class="addon-theme-card-right">
+              <div class="addon-theme-card-price">S$899</div>
+              <a href="#" class="addon-theme-card-cta">Learn more →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-theme-divider"></div>
+
+      <!-- Cancer surveillance -->
+      <div class="addon-theme-group">
+        <div class="addon-theme-label">Cancer surveillance</div>
+        <div class="addon-theme-desc">For those who want proactive, blood-based cancer monitoring beyond standard markers.</div>
+        <div class="addon-theme-cards">
+          <div class="addon-theme-card">
+            <div class="addon-theme-card-left">
+              <div class="addon-theme-card-name">SPOT-MAS™ test</div>
+              <div class="addon-theme-card-sub">Screens for 10 cancer types via a blood sample</div>
+              <div style="font-size:12px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-top:8px;">For those who want an additional layer of surveillance beyond standard markers. A single blood draw, reviewed with your doctor.</div>
+            </div>
+            <div class="addon-theme-card-right">
+              <div class="addon-theme-card-price">S$899</div>
+              <a href="#" class="addon-theme-card-cta">Learn more →</a>
+            </div>
+          </div>
+          <div class="addon-theme-card">
+            <div class="addon-theme-card-left">
+              <div class="addon-theme-card-name">LucenceINSIGHT™ 50 test</div>
+              <div class="addon-theme-card-sub">Screens for 50+ cancer types via a blood sample</div>
+              <div style="font-size:12px;color:var(--ink-mid);font-weight:300;line-height:1.7;margin-top:8px;">The broadest blood-based cancer screening available. For those who want the widest possible coverage.</div>
+            </div>
+            <div class="addon-theme-card-right">
+              <div class="addon-theme-card-price">S$3,999</div>
+              <a href="#" class="addon-theme-card-cta">Learn more →</a>
+            </div>
+          </div>
+        </div>
+        <div class="cancer-warning">⚠ These tests are not diagnostic for cancer and do not replace recommended cancer screening programmes. Results must be reviewed with a physician.</div>
+      </div>
+
     </div>
   </div>
 </section>
